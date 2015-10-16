@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block 'body' %}
+
+    <p style="color:red;"><b>Work in progress!</b></p>
+  <img width="75%" src="{% static "construction.jpg" %}" id="full-screen-background-image" /> 
+{% endblock %}

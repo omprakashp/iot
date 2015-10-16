@@ -1,0 +1,168 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Basic Details</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="/static/app.css" />
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+<div class="container" id="grad1">
+<div class="box4" style="background-color:#F0F0F0;">
+<img src="{% static "embitel_logo.png" %}" width="200" height="53">                
+   <a href="/logout/" class="btn btn-warning" role="button" style="background-color:#E47833;float: right;">Logout</a>
+</div>
+</div>
+
+
+<hr style="height:0.1em;background-color:lightgray;box-shadow: 0.1px 0.1px 0.1px gray;border: 1px ridge lightgray; border-radius: 2px;">
+
+<div class="container-fluid" id="grad1">
+<div class="box1">
+<table class="table table-striped table-hover" style="height:15em;width:13em;">
+
+    <tbody>
+      <tr>
+        <td><a href="/iot/dashboard/"><span class="glyphicon glyphicon-user"></span> My Profile</a></td>
+        
+      </tr>
+      <tr>
+        <td><a href="/iot/device_management/"><span class="glyphicon glyphicon-floppy-disk"></span> My Devices</a></td>
+      </tr>
+      <tr>
+        <td><a href="/devices/add_device/"><span class="glyphicon glyphicon-plus-sign"></span> Add a Device</a></td>
+      </tr>
+      <tr>
+     <td><a href="/devices/my_events/"><span class="glyphicon glyphicon-cloud"></span> My Events</a></td>
+     </tr>
+    <!--tr>
+     <td><a href="/work_in_progress/"><span class="glyphicon glyphicon-circle-arrow-right"></span> Compare Devices</a></td>
+     </tr--!>
+     <tr>
+     <td><a href="/devices/my_patterns/"><span class="glyphicon glyphicon glyphicon-eye-open"></span> My Patterns</a></td>
+     </tr>
+<tr></tr>
+    </tbody>
+  </table>
+           
+</div>
+
+<div class="verticalLine" style="height:65em;">
+</div>
+
+
+<style>
+div.box2 {
+    box-sizing: border-box;
+    width: 82%;
+    height: 100%;
+    margin-top: 0em;
+    padding-top: 0.1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border: 0em solid gray;
+    float: left;
+    padding-bottom:0em;
+    height : 100%;
+}
+</style>
+
+<div class="box2">
+
+<ul class="nav nav-tabs" role="tablist">
+                     <li><a href="/devices/details/{{device_id}}/"><span class="glyphicon glyphicon-list"></span> Device Details</a></li>
+                     <li><a href="/devices/configure/{{device_id}}/"><span class="glyphicon glyphicon-wrench"></span> Configure</a></li>
+
+                     <li class="active"><a href="/iot/monitor/{{device_id}}/"><span class="glyphicon glyphicon-stats"></span> Monitor</a></li>
+
+                     <li><a href="#"><span class="glyphicon glyphicon-hand-right"></span> Device Stats</a></li>
+
+                     <li><a href="/devices/delete/{{device_id}}/"><span class="glyphicon glyphicon-remove"></span> Delete Device</a></li>
+</ul>
+
+
+
+<script type="text/javascript" src="/static/google_graphs_hsapi.js"></script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var data = google.visualization.arrayToDataTable({{ result|safe }});
+
+  var options = {
+    title: 'Device Usage',
+    hAxis: {title: 'Day', titleTextStyle: {color: 'black'}},
+    is3D: true,
+    labels:
+	{
+	  enabled: false
+	}
+  };
+
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+  chart.draw(data, options);
+
+}
+    </script>
+{% if result %}
+    <div id="chart_div" style="height: 400px;"></div>
+{% endif %}
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: 'Event based monitoring!'
+        },
+        subtitle: {
+            text: 'Sensor data events ON(1) and OFF(0)'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'On / Off ( 1/ 0)'
+            },
+            min: 0
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+        },
+
+        series: [{
+            name: 'Activity Graph',
+            // Define the data points. All series have a dummy year
+            // of 1970/71 in order to be compared on the same x axis. Note
+            // that in JavaScript, months start at 0 for January, 1 for February etc.
+            data: {{ time_intervals|safe }}
+        }]
+    });
+});
+
+</script>
+
+</div>

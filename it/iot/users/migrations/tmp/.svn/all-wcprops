@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp
+END
+0003_devices_active.py
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0003_devices_active.py
+END
+0007_devicesdata_email.py
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0007_devicesdata_email.py
+END
+0006_devices_current_state.py
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0006_devices_current_state.py
+END
+0004_applications.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0004_applications.py
+END
+0001_initial.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0001_initial.py
+END
+0013_applications_app_type.py
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0013_applications_app_type.py
+END
+0023_remove_device_type_device_category.py
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0023_remove_device_type_device_category.py
+END
+0016_auto_20141120_1205.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0016_auto_20141120_1205.py
+END
+0020_auto_20141121_1625.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0020_auto_20141121_1625.py
+END
+0010_auto_20141111_1619.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0010_auto_20141111_1619.py
+END
+0002_auto_20141027_0712.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0002_auto_20141027_0712.py
+END
+0014_devices_device_features.py
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0014_devices_device_features.py
+END
+0011_auto_20141111_1628.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0011_auto_20141111_1628.py
+END
+0008_auto_20141111_1613.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0008_auto_20141111_1613.py
+END
+0005_auto_20141103_0850.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0005_auto_20141103_0850.py
+END
+0017_auto_20141120_1208.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0017_auto_20141120_1208.py
+END
+0024_auto_20141127_1302.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0024_auto_20141127_1302.py
+END
+0012_auto_20141111_1628.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0012_auto_20141111_1628.py
+END
+0009_auto_20141111_1614.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0009_auto_20141111_1614.py
+END
+0025_auto_20141127_1304.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0025_auto_20141127_1304.py
+END
+0018_auto_20141121_1255.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0018_auto_20141121_1255.py
+END
+0021_auto_20141124_1546.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0021_auto_20141124_1546.py
+END
+0019_auto_20141121_1624.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0019_auto_20141121_1624.py
+END
+0015_auto_20141117_1543.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0015_auto_20141117_1543.py
+END
+0022_auto_20141127_1257.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/users/migrations/tmp/0022_auto_20141127_1257.py
+END

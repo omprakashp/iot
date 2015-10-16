@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+
+
+{% block 'body' %}
+
+
+            {% for device in devices %}
+    	      <div style="float:left; width:25%;">
+                     {% if "camera" in device.device_type %}
+                         <a href="http://tatatrent.embdev.in:5000/camera.swf">
+                     {% else %}
+
+                         {% if "autocar" in device.device_type %}
+                             <a href="/devices/details/autocar/">
+                         {% else %}
+                             <a href="/devices/details/{{device.device_key}}/">
+                         {% endif %}
+                     {% endif %}
+
+			<figure>
+                             {% if "light" in device.device_type %}
+				<img src="{% static "light.gif" %}" alt="{{device.device_name}}">
+			     {% elif "switch" in device.device_type %}
+				<img src="{% static "switch.png" %}" alt="{{device.device_name}}">
+			     {% elif "car" in device.device_type %}
+				<img src="{% static "car.png" %}" alt="{{device.device_name}}">
+	                     {% elif "head_unit" in device.device_type %}
+				<img src="{% static "headunit.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "temperature" in device.device_type %}
+				<img src="{% static "temperature.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "fan" in device.device_type %}
+				<img src="{% static "fan.gif" %}" alt="{{device.device_name}}">
+                 	     {% elif "windmill" in device.device_type %}
+				<img src="{% static "windmill.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "fire_alarm" in device.device_type %}
+				<img src="{% static "fire_alarm.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "security_alarm" in device.device_type %}
+				<img src="{% static "security_alarm.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "motion_detector" in device.device_type %}
+				<img src="{% static "motion_sensor.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "blind_slats" in device.device_type %}
+				<img src="{% static "blinds.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "_ac" in device.device_type %}
+				<img src="{% static "ac.png" %}" alt="{{device.device_name}}">
+                 	     {% elif "beacon" in device.device_type %}
+				<img src="{% static "beacon.png" %}" alt="{{device.device_name}}">
+                  	     {% elif "camera" in device.device_type %}
+				<img src="{% static "camera.png" %}" alt="{{device.device_name}}">
+                	     {% else %}
+				<img src="{% static "fan.png" %}" alt="{{device.device_name}}">
+                             {% endif %}
+			</a>
+                            <figcaption style="width:50%;text-align:center;">{{device.device_name}}</figcaption><br/>
+                        </figure>
+              </div>
+
+            {% endfor %}
+
+
+{% endblock %}
+
+
+{% block 'Rpannel' %}
+<center style="background:rgba(0,0,0,0.10);">
+<a style="padding:3px;color:#E47833;font-family:tahoma;font-size:13px;font-weight:bold;text-decoration:none;" href="http://www.embitel.com/embedded-services/iot-gateway-solutions-services/" target="_blank">Device Patterns Identified</a></center>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+/*
+Cross browser Marquee II- © Dynamic Drive (www.dynamicdrive.com)
+For full source code, 100's more DHTML scripts, and TOS, visit http://www.dynamicdrive.com
+Modified by jscheuer1 for continuous content. Credit MUST stay intact for use
+*/
+
+//Specify the marquee's width (in pixels)
+var marqueewidth="100"
+//Specify the marquee's height
+var marqueeheight= $( window ).height() - 170 + 'px'
+//Specify the marquee's marquee speed (larger is faster 1-10)
+var marqueespeed=1
+//Specify initial pause before scrolling in milliseconds
+var initPause=1000
+//Specify start with Full(1)or Empty(0) Marquee
+var full=1
+//Pause marquee onMousever (0=no. 1=yes)?
+var pauseit=1
+//Specify Break characters for IE as the two iterations
+//of the marquee, if text, will be too close together in IE
+var iebreak='<p></p>'
+
+//Specify the marquee's content
+//Keep all content on ONE line, and backslash any single quotations (ie: that\'s great):
+
+var marqueecontent= '{{device_patterns|safe}}'
+
+////NO NEED TO EDIT BELOW THIS LINE////////////
+var copyspeed=marqueespeed
+var pausespeed=(pauseit==0)? copyspeed: 0
+var iedom=document.all||document.getElementById
+var actualheight=''
+var cross_marquee, cross_marquee2, ns_marquee
+
+function populate(){
+if (iedom){
+var lb=document.getElementById&&!document.all? '' : iebreak
+cross_marquee=document.getElementById? document.getElementById("iemarquee") : document.all.iemarquee
+cross_marquee2=document.getElementById? document.getElementById("iemarquee2") : document.all.iemarquee2
+cross_marquee.style.top=(full==1)? '8px' : parseInt(marqueeheight)+8+"px"
+cross_marquee2.innerHTML=cross_marquee.innerHTML=marqueecontent+lb
+actualheight=cross_marquee.offsetHeight
+cross_marquee2.style.top=(parseInt(cross_marquee.style.top)+actualheight+8)+"px" //indicates following #1
+}
+else if (document.layers){
+ns_marquee=document.ns_marquee.document.ns_marquee2
+ns_marquee.top=parseInt(marqueeheight)+8
+ns_marquee.document.write(marqueecontent)
+ns_marquee.document.close()
+actualheight=ns_marquee.document.height
+}
+setTimeout('lefttime=setInterval("scrollmarquee()",30)',initPause)
+}
+window.onload=populate
+
+function scrollmarquee(){
+
+if (iedom){
+if (parseInt(cross_marquee.style.top)<(actualheight*(-1)+8))
+cross_marquee.style.top=(parseInt(cross_marquee2.style.top)+actualheight+8)+"px"
+if (parseInt(cross_marquee2.style.top)<(actualheight*(-1)+8))
+cross_marquee2.style.top=(parseInt(cross_marquee.style.top)+actualheight+8)+"px"
+cross_marquee2.style.top=parseInt(cross_marquee2.style.top)-copyspeed+"px"
+cross_marquee.style.top=parseInt(cross_marquee.style.top)-copyspeed+"px"
+}
+
+else if (document.layers){
+if (ns_marquee.top>(actualheight*(-1)+8))
+ns_marquee.top-=copyspeed
+else
+ns_marquee.top=parseInt(marqueeheight)+8
+}
+}
+
+if (iedom||document.layers){
+with (document){
+if (iedom){
+write('<div style="background:rgba(0,0,0,0.10);position:relative;width:'+marqueewidth+';height:'+marqueeheight+';overflow:hidden" onMouseover="copyspeed=pausespeed" onMouseout="copyspeed=marqueespeed">')
+write('<div id="iemarquee" style="position:absolute;left:0px;top:0px;width:100%;";>')
+write('</div><div id="iemarquee2" style="position:absolute;left:0px;top:0px;width:100%;z-index:100;background:transparent;">')
+write('</div></div>')
+
+}
+else if (document.layers){
+write('<ilayer width='+marqueewidth+' height='+marqueeheight+' name="ns_marquee">')
+write('<layer name="ns_marquee2" width='+marqueewidth+' height='+marqueeheight+' left=0 top=0 onMouseover="copyspeed=pausespeed" onMouseout="copyspeed=marqueespeed"></layer>')
+write('</ilayer>')
+}
+}
+}
+</script>
+ {% endblock %}
+
+

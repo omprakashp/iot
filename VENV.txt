@@ -1,0 +1,64 @@
+#virtual environments are maintained in virtualenvs directory
+sudo virtualenv stage
+
+Packages Installed:
+
+#1.7 version installed
+pip install django
+pip install psycopg2
+
+created application using the following commands
+cd /var/www/www.embitel.com/
+django-admin startproject iot
+Renamed outer directory iot to it (just to differentiate)
+
+Inside iot directory we have created different applications (for each platfotm) using the following commands.
+
+python ../manage.py startproject ecommerce
+python ../manage.py startproject embedded
+python ../manage.py startproject automation
+python ../manage.py startproject mobility
+
+# You can create n number of sub applications inside each directories (maintain urls mapping)
+
+copied urls file in each project folder.
+And included apps(ecomm/embedded/mob/auto) in to main urls file (iot/urls.py)
+
+
+Edited settings file. i.e; included app name and database has been created and setup in settings file
+
+CREATE DATABASE
+$psql -U postgres 
+#CREATE USER westside_app WITH PASSWORD 'Test';
+#CREATE DATABASE westside_stage;
+#ALTER DATABASE westside_stage OWNER TO westside_app;
+#GRANT ALL PRIVILEGES ON DATABASE westside_stage to westside_app;
+
+
+python ../manage.py syncdb
+python ../manage.py migrate
+
+
+Can create n number of applications under each platform(ecom/embed/auto/mob)
+#make sure in each directory __init__.py file exists; then only it considers that directory as a package
+
+Installed ipython using pip install ipython
+import settings module first and run django setup to get the db data from ipython
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "iot.settings")
+import django
+django.setup()
+
+
+#users models
+
+Created User table inherited with django.contrib.auth.user
+python manage.py syncdb
+python manage.py makemigrations
+python manage.py migrate
+
+Created Devices table with Many to Many relationship with user
+
+Created Visitors table just to log the actions performed by the user via browser or mobile
+
+Created DevicesData table  with FK constraint to Devices table to log the data from devices to cloud (useful for big data analytics)

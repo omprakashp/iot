@@ -1,0 +1,6 @@
+<div class="bttm-menu">
+<a href="{{ cobranding_var.links.home|default:'/' }}"><span>Home</span></a><span class="bttm-menu-line">&nbsp;</span> <a href="/about-us/about-taxspanner"><span>About Us</span></a><span class="bttm-menu-line">&nbsp;</span> <a href="/about-us/terms-of-use"><span>Terms of Use</span></a> <span class="bttm-menu-line">&nbsp;</span> <a href="/about-us/support/"><span>Feedback</span></a> <span class="bttm-menu-line">&nbsp;</span> <a href="/about-us/privacy-policy"><span>Privacy policy</span></a> <span class="bttm-menu-line">&nbsp;</span><a href="/about-us/contact"><span>Contact us</span></a>
+</div> 
+
+<div class="copyright"><span class="copyright-black-txt">&copy; Span Across IT Solutions Private Limited</span>
+</div>             

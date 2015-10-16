@@ -1,0 +1,455 @@
+{% load pages_tags_extra %}
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <!-- meta-keywords -->
+    <meta name="keywords" content="{% block meta_keywords %}Page/Content Metadata -> keywords (comma delimited){% endblock %}" />
+
+    <!-- meta-description -->
+    <meta name="description" content="{% block meta_description %}Page/Content Metadata -> description.{% endblock %}" />
+
+    <!-- Favicon definition -->
+    <link rel="shortcut icon" type="image/ico" href="{% static favicon.ico %}" />
+
+
+    {% block extrameta %}
+      <!-- meta-copyright -->
+      <meta name="copyright" content="Copyright 2010 Span Across" />
+    {% endblock extrameta %}
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block css %}
+      <!-- stylesheet definitions -->
+      <link href="{% static "app_style.css" %}" rel="stylesheet" type="text/css"/>
+      <link href="{% static "app_menu.css" %}" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="{% static "style.css" %}" type="text/css" media="screen" />
+      <link rel="stylesheet" href="{% static "menu.css" %}" type="text/css" media="screen" />
+      <link rel="stylesheet" href="{% static "form16.css" %}" type="text/css" media="screen" />
+      <link rel="stylesheet" href="{% static "jsval.css" %}" type="text/css"/>
+      <link rel="stylesheet" href="{% static "menu.css" %}" type="text/css"/>
+      <link rel="stylesheet" href="{% static "container.css" %}" type="text/css"/>
+      {% if cobrand.settings.use_default_btns %}
+        {# Do nothing. #}
+      {% else %}
+        <link href="{% static "btn_apply.css" %}" rel="stylesheet" type="text/css"/>
+      {% endif %}
+    {% endblock css %}
+
+    {% block extrastyle %}{% endblock %}
+
+    <!-- Page-specific styles -->
+    {% block js %}
+      <!-- javascript includes -->
+      <script src="{% static "jquery-1.4.4.min.js" %}" type="text/javascript"></script>
+      <script src="{% static "query.hoverIntent.minified.js" %}" type="text/javascript"></script>
+      <script src="{% static "jMyCarousel.min.js" %}" type="text/javascript"></script>
+      <script src="{% static "jquery.fancybox-1.3.4.pack.js" %}" type="text/javascript"></script>
+    <script src="{% static "utility.js" %}" type="text/javascript"></script>
+    <script src="{% static "popup.js" %}" type="text/javascript"></script>
+    <script src="{% static "scripts.js" %}" type="text/javascript"></script>
+    <script src="{% static "my_fns.js?a=" %}" type="text/javascript"></script>
+    <script src="{% static "validate.js" %}" type="text/javascript"></script>
+
+      <!-- Yahoo JS -->
+      <script type="text/javascript" src="{% static "yahoo-min.js" %}"></script>
+      <script type="text/javascript" src="{% static "event-min.js" %}"></script>
+      <script type="text/javascript" src="{% static "dom-min.js" %}"></script>
+      <script type="text/javascript" src="{% static "container_core-min.js" %}"></script>
+      <script type="text/javascript" src="{% static "container-min.js" %}"></script>
+      <script type="text/javascript" src="{% static "menu-min.js" %}"></script>
+	<!--
+      {% ifequal user.package.name "Quick" %}
+      <script src="{{ static }}js/menu_highlightq.js" type="text/javascript"></script>
+      {% endifequal %}
+
+      {% ifequal user.package.name "Advanced" %}
+      <script src="{{ static }}js/menu_highlighta.js" type="text/javascript"></script>
+      {% endifequal %}
+
+      {% ifequal user.package.name "Professional" %}
+      <script src="{{ static }}js/menu_highlighta.js" type="text/javascript"></script>
+      {% endifequal %}
+	-->
+      <!-- Page-specific script -->
+      <script type="text/javascript">
+	var today_date = "{{today_date}}";
+      </script>
+
+      <script type="text/javascript">
+	var newtab = "{% block l1menuhighlight %} {% endblock %}";
+	var newsubtab ="{% block l2menuhighlight %} {% endblock %}";
+      </script>
+
+      <script type="text/javascript">
+	function fieldfocus(){ {% block focus %}{% endblock %} }
+      </script>
+
+      <script type="text/javascript">
+        YAHOO.example.onMenuBarReady = function() {
+        // "beforerender" event handler for the menu bar
+        function onMenuBarBeforeRender(p_sType, p_sArgs, p_oMenu) {
+        var oSubmenuData = {
+        {% ifequal user.package.name "Quick" %}
+        "shortcuts" : [
+
+        { text: "Select Return", url: "/taxspanner/selectreturn/" },
+
+        { text: "Fast Efile", url: "/fastefile/fastefile-start/" },
+
+        { text: "Personal", url: "/personal/personal-start/" },
+
+        { text: "Income Tax",  url: "/incometax/incometax-start/", submenu: { id: "incometax12", itemdata: [
+        { text: "Income", url:"/incometax/income/level_edit/", submenu: { id: "income12", itemdata: [
+        { text: "Salary (Form 16)", url:"/incometax/income/salary/level_edit/" },
+        { text: "Interest Income", url:"/incometax/income/othersrcs/interest/level_edit/" }
+        ] } },
+
+        { text: "Deductions", url:"/incometax/deductions/level_edit/" },
+        { text: "Relief", url:"/incometax/relief/level_edit/" },
+        { text: "Taxes", url: "/incometax/taxes/level_edit/", submenu: { id: "taxes12", itemdata: [
+
+        { text: "TDS", url:"/incometax/taxes/tdsother/level_edit/" },
+        { text: "Advance Tax", url:"/incometax/taxes/advtax/level_edit/" },
+        { text: "Self Asst Tax",  url:"/incometax/taxes/selfassttax/level_edit/" },
+
+        ] } }
+        ] } },
+
+        { text: "Return Review", url: "/returnreview/returnreview-start/" },
+        { text: "Filing", url: "/filing/filing-start/", submenu: { id: "filing12", itemdata: [
+        { text: "Bank Details", url:"/filing/otherinfo/refundbankinfo/" },
+        ] } },
+        ]
+        {% endifequal %}
+
+        {% ifequal user.package.name "Advanced" %}
+        "shortcuts": [
+
+        { text: "Select Return", url: "/taxspanner/selectreturn/" },
+
+        { text: "Fast Efile", url: "/fastefile/fastefile-start/" },
+
+        { text: "Personal", url: "/personal/personal-start/" },
+
+        { text: "Income Tax",  url: "/incometax/incometax-start/", submenu: { id: "incometax12", itemdata: [
+        { text: "Income", url:"/incometax/income/level_edit/", submenu: { id: "income12", itemdata: [
+        { text: "Salary (Form 16)", url:"/incometax/income/salary/level_edit/" },
+        { text: "House Property", url:"/incometax/income/houseprop/level_edit/" },
+        { text: "Capital Gains", url:"/incometax/income/capgain/level_edit/" },
+        { text: "Other Sources", url:"/incometax/income/othersrcs/level_edit/" },
+        ] } },
+
+        { text: "Deductions", url:"/incometax/deductions/level_edit/" },
+        { text: "Relief", url:"/incometax/relief/level_edit/" },
+        { text: "Taxes", url: "/incometax/taxes/level_edit/", submenu: { id: "taxes12", itemdata: [
+
+        { text: "TDS", url:"/incometax/taxes/tdsother/level_edit/" },
+        { text: "Advance Tax", url:"/incometax/taxes/advtax/level_edit/" },
+        { text: "Self Asst Tax",  url:"/incometax/taxes/selfassttax/level_edit/" },
+
+        ] } }
+        ] } },
+
+        { text: "Return Review", url: "/returnreview/returnreview-start/" },
+        { text: "Filing", url: "/filing/filing-start/", submenu: { id: "filing13", itemdata: [
+        { text: "Bank Details", url:"/filing/otherinfo/refundbankinfo/" },
+        ] } },
+        ]
+        {% endifequal %}
+
+        {% ifequal user.package.name "Professional" %}
+        "shortcuts": [
+
+        { text: "Select Return", url: "/taxspanner/selectreturn/" },
+
+        { text: "Personal", url: "/personal/personal-start/" },
+
+        { text: "Income Tax",  url: "/incometax/incometax-start/", submenu: { id: "incometax12", itemdata: [
+        { text: "Income", url:"/incometax/income/level_edit/", submenu: { id: "income12", itemdata: [
+        { text: "Salary (Form 16)", url:"/incometax/income/salary/level_edit/" },
+        { text: "House Property", url:"/incometax/income/houseprop/level_edit/" },
+        { text: "Capital Gains", url:"/incometax/income/capgain/level_edit/" },
+        { text: "Business", url:"/incometax/income/business/business-start/", submenu: { id: "bs12", itemdata: [
+        { text: "Income", url:"/incometax/income/business/pnl/revenue/businessincome_aggregate/" },
+        { text: "Expense", url:"/incometax/income/business/pnl/expense/expense_aggregate/" },
+        { text: "Assets",  url:"/incometax/income/business/bs/assets/assets_aggregate/" },
+        { text: "Liabilities",  url:"/incometax/income/business/bs/liab/liab_aggregate/" },
+	] } },
+
+        { text: "Other Sources", url:"/incometax/income/othersrcs/level_edit/" },
+        ] } },
+
+        { text: "Deductions", url:"/incometax/deductions/level_edit/" },
+        { text: "Relief", url:"/incometax/relief/level_edit/" },
+        { text: "Taxes", url: "/incometax/taxes/level_edit/", submenu: { id: "taxes12", itemdata: [
+
+        { text: "TDS", url:"/incometax/taxes/tdsother/level_edit/" },
+        { text: "Advance Tax", url:"/incometax/taxes/advtax/level_edit/" },
+        { text: "Self Asst Tax",  url:"/incometax/taxes/selfassttax/level_edit/" },
+
+        ] } }
+        ] } },
+
+        { text: "Return Review", url: "/returnreview/returnreview-start/" },
+        { text: "Filing", url: "/filing/filing-start/", submenu: { id: "filing13", itemdata: [
+        { text: "Bank Details", url:"/filing/otherinfo/refundbankinfo/" },
+        ] } },
+        ]
+        {% endifequal %}
+        };
+
+
+        this.getItem(0).cfg.setProperty("submenu", { id:"y_shortcuts", itemdata: oSubmenuData["shortcuts"] });
+        };
+
+
+	// Instantiate and render the menu bar
+	var oMenuBar = new YAHOO.widget.MenuBar("mymenu", { autosubmenudisplay:true, showdelay:100, hidedelay:750, lazyload:true });
+
+
+        // Subscribe to the "beforerender" event
+
+        oMenuBar.beforeRenderEvent.subscribe(onMenuBarBeforeRender, oMenuBar, true);
+
+
+        // Render the menu bar
+
+        oMenuBar.render();
+
+        };
+
+
+	// Initialize and render the menu bar when it is available in the DOM
+	YAHOO.util.Event.onContentReady("mymenu", YAHOO.example.onMenuBarReady);
+
+	// namespace for the tooltips
+	YAHOO.namespace("example.container");
+      </script>
+
+      <script type="text/javascript">
+	$(document).ready(function() {
+	    // Popup for display_url if display_target == 'inline'
+	     $( "a.fancy-popup" ).fancybox();
+
+		// Hide help text by default
+	    $( "div.display-help-text" ).hide( "fast" );
+
+	    var li_active_class = "li.{{ cobrand.classes.li_active_class|default:'app-crt' }}";
+	    var active = $( ".{{ cobrand.classes.app_menu|default:'app-menu-box-cb'}} > ul > " + li_active_class );
+		// 124px is the width of each div
+	    var idx = $( ".{{ cobrand.classes.app_menu|default:'app-menu-box-cb'}} > ul > li" ).index( active );
+	    if( idx >= 3 ) {
+		idx -= 3;
+	    } else {
+		idx = 0;
+	    }
+	    var start = 124 * idx;
+
+	    $(".{{ cobrand.classes.app_menu|default:'app-menu-box-cb'}}").jMyCarousel({
+		btnNext: ".{{ cobrand.classes.app_arrow_right|default:'app-arrow-right' }}",
+		btnPrev: ".{{ cobrand.classes.app_arrow_left|default:'app-arrow-left' }}",
+		speed: 500,
+		visible: '7',
+		circular: false,
+		start: start,
+		scroll: 1,
+		eltByElt: true,
+		evtStart: 'mouseenter',
+		evtStop: 'mouseleave'
+	    });
+	});
+
+
+        $(window).load(function() {
+            var btn_bg = "{{ cobrand.classes.app_btn_bg|default:'btnplain' }}";
+	    $( "input.btnplain" ).each( function() {
+		$(this).removeClass( "btnplain" ).addClass( btn_bg );
+	    });
+            $( "input.btngrad" ).each( function() {
+                $(this).removeClass( "btngrad" ).addClass( btn_bg );
+            });
+	});
+      </script>
+    {% endblock js %}
+    {% block extrajs %} {% endblock %}
+    {% block extrahead %}{% endblock %}
+  </head>
+
+  {% block body %}<body class="cb-app" onload="fieldfocus()">{% endblock body %}    <div id="main-container-cb">
+      <div class="{{ cobrand.classes.page_header|default:'page-header' }}">
+	<div class="app-top">
+	  {% block user_welcome %}
+	    <div class="signin-pic1">
+	      <img src="{% static "login-icon.jpg" %}" alt="none"/>
+	    </div>
+	    <div class="app-top-txt">Welcome </div>
+            {% if request.user.is_authenticated %}
+     	        <div class="app-top-txtb">{{ username|display_api_txt|safe }}</div>
+                <div class="sign-out">
+                  <a href="/login/logout"><img src="{% static "sign-out.jpg" %}" alt="none"/></a>
+                </div>
+            {% else %}
+                <div class="app-top-txtb">Guest</div>
+            {% endif %}
+          {% endblock user_welcome %}
+	</div>  <!-- .app-top -->
+
+      </div>  <!-- .page-header -->
+
+      <div class="{{ cobrand_cms.classes.main_container|default:'main-container-cb' }}">
+        {% block app_main %}
+	<div class="app-main-cb">
+	  <div class="app-mainpg">
+	    <div class="{{ cobrand.classes.app_logo|default:'app-logo-cb' }}">
+	      <a href="{{ cobrand.links.back_to_home|default:'/' }}">
+	      {% block logo %}
+		<img src="{% static "{{ cobrand.images.logo.path }}" %}" alt="{{ cobrand.images.logo.alt|default:'Logo' }}" width="{{ cobrand.images.logo.width|default:'167' }}" height="{{ cobrand.images.logo.height|default:'48' }}"/>
+		{% endblock logo %}
+	      </a>
+	    </div>
+
+	    {{ return_info|display_return_info|safe }}
+	  </div>
+	</div>  <!-- app-main -->
+        {% endblock app_main %}
+
+	{% block right_top_pane %}
+	  <div class="right-top-pane2-cb">
+	    &nbsp;
+	  </div>  <!-- .right-top-pane2 -->
+	{% endblock right_top_pane %}
+
+        {% block app_menu %}
+	<div class="app-menubg-cb">
+	  <div class="app-menu-main-cb {{ cobrand.classes.app_menu_main_bg|default:'app-menu-main-cb-blue' }}">
+	    <div class="{{ cobrand.classes.app_arrow_left|default:'app-arrow-left' }}">
+	      <a href="#" class="app-arrow-link">
+		<img src="{% static "{{ cobrand.images.nav_arrow_left.path|default:'nav-arrow-left.png' }}" %}" alt="{{ cobrand.images.nav_arrow_left.alt|default:'none' }}"/></a>
+	      </a>
+	    </div>
+
+
+	    <div class="{{ cobrand.classes.app_arrow_right|default:'app-arrow-right' }}">
+	     <a href="#" class="app-arrow-link">
+	       <img src="{% static "{{ cobrand.images.nav_arrow_right.path|default:'nav-arrow-right.png' }}" %}" alt="{{ cobrand.images.nav_arrow_right.alt|default:'none' }}"/></a>
+	    </div>
+	  </div>  <!-- .app-menu-main -->
+	</div>  <!-- .app-menubg -->
+        {% endblock app_menu %}
+	<div class="{% block middle_class %}middle-cb{% endblock %}">
+	  <div class="app-mainpg-cb">
+	    {% block main_content %}{% endblock %}
+	  </div>
+
+	{% block right_panel %}
+	  <div class="appright-panel">
+	    <div class="appright-panel-cb">
+	      <div class="app-right-txt">
+		{{ shortcuts|display_shortcuts|safe }}
+	      </div>  <!-- .app-right-txt -->
+
+	      <div class="app-r-arrow">
+		<img src="{% static "r-icon.jpg" %}" alt="arrow right" width="16px" height="22px"/>
+	      </div>
+
+	      <div class="app-right-thead-cb {{ cobrand.classes.right_pane_txt|default:'app-right-blue' }}">Summary</div>
+	      <div class="sa-box"></div>
+	      <div class="sa-box"></div>
+
+	      <!--div class="app-wht-txt5" style="margin-bottom: 10px; font-size: 10px; font-style: normal; font-weight: bold; color: black">The site will be down for maintenance 
+	      between 6:00 PM to 7:00 PM</div -->
+
+	      <div class="clear-app"></div>
+
+	      {{ summary_items|display_summary|safe }}
+
+	      <!--div class="app-wht-txt5">All figures in Indian Rupees</div-->
+
+	      <div class="app-right-txt">
+                {% comment %}
+		<div class="argt-divider">
+		  <div class="clear-app"></div>
+		</div>
+
+		{% block faqs %}
+b		<div class="faq">FAQs</div>
+		<div class="faqs">
+		  <ul>
+		    {% for faq in app_faqs %}
+		      <li><a href="{{ faq.get_absolute_url }}" target="_blank" class="bodytext">{{ faq.title|safe }}</a></li>
+		    {% endfor %}
+		  </ul>
+		  <div class="faq-lnk">
+		    <a href="{{ pg_faqs.get_absolute_url }}" class="blue-link"><strong>Browse more FAQs</strong><img alt="blue arrow" class="pic" src="{% static "blue-arrow.jpg" %}" height="9" width="5"/></a>
+		  </div>
+		</div>
+		{% endblock faqs %}
+
+		<div class="argt-divider"><div class="clear-app"></div></div>
+
+		{% if not user.is_staff %}
+		<div class="faq-header {{ cobrand.classes.right_pane_txt|default:'faq-red' }}">Feedback</div>
+		<form action="" method="post">
+		  <div class="feed-b">
+		    <textarea name="query" id="query" onfocus="clearText(this)" cols="1" rows="5"
+class="feed-bt">Is there anything about this form that you want to tell us? Something missing or faulty, ideas to make it simpler or something good about it...     Please type your feedback here and let us know!</textarea>
+		  </div>
+		  <div style="clear:both;display:none; color:red;" id="fthanks">Thank you!</div>
+		</form>
+		{% endif %}
+		<div class="clear-app"></div>
+                {% endcomment %}
+	      </div>  <!-- .app-right-txt -->
+
+	      <div class="feed-but">
+                {% comment %}
+		{% if not user.is_staff %}
+		<a href="javascript:void(0)" onclick="send_feedback()"><img src="{% static "{{ cobrand.images.feedback_btn.path|default:'send-feedback.jpg' }}" %}" alt="{{ cobrand.images.feedback_btn.alt|default:'Feedback button' }}" width="{{ cobrand.images.feedback_btn.width|default:'120' }}" height="{{ cobrand.images.feedback_btn.height|default:'39' }}"/></a>
+	      {% endif %}
+              {% endcomment %}
+	      </div>
+	    </div>  <!-- .appright-panel2 -->
+	  </div>  <!-- .appright-panel -->
+	  {% endblock right_panel %}
+	</div>  <!-- .middle -->
+
+      </div>  <!-- .main-container1 -->
+
+     {% block app_footer %}
+      <div class="{{ cobrand.classes.footer|default:'app-footer' }}">
+        <div class="main-container2">
+          <div class="footer1-cb">
+            {% with cobrand as cobranding_var %}
+              {% include "includes/footer_links.html" %}
+            {% endwith %}
+          </div>
+
+          <div class="{{ cobrand.classes.footer_right|default:'foot-r-base-cb foot-r-cb' }}">
+            <img src="{% static "{{ cobrand.images.footer_logo.path|default:'r-img.png' }}" %}" width="{{  cobrand.images.footer_logo.width|default:'144' }}" height="{{ cobrand.images.footer_logo.height|default:'46' }}" alt="Powered by Taxspanner"/>
+          </div>
+        </div>  <!-- .main-container1 -->
+      </div>  <!-- .app-footer -->
+      {% endblock app_footer %}
+
+    </div>  <!-- .main-container -->
+
+    <!-- leave this blank div in here to make sure you can click anywhere on the document for MSIE 5 mac -->
+    <div id="blankDiv" style="position: absolute; left: 0; top: 0; visibility: hidden"></div>
+
+    <script type="text/javascript">
+      //     YAHOO.example.container.tt1 = new YAHOO.widget.Tooltip("tt1", { context:"toppod", text:"Tax tracker: dynamic tax computations", doHide:"3" });
+    </script>
+
+    <!--script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      _uacct = "UA-2503893-1";
+      urchinTracker();
+    </script-->
+  {% block fb_init %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "base.dhtml" %}
+
+{% block salute %} 
+{% load myfilters %}
+
+{% if  not user.is_anonymous %} {{ user.email|escape|truncate:"18" }}  |  <a href="/taxspanner/setting/" title="Your settings: email, password, payment history" >Settings</a>  | {% ifequal user.package.name "Quick" %} {% if not user.is_paid %} <a href="/taxspanner/upgrademe/" title="Upgrade to TaxSpanner Advanced">Upgrade</a>  |{% endif %} {% endifequal %}<a href="/filing/payment/payment-variable" title="Pay Now" >Pay Now</a> | <a href="/login/logout/" title="Logout">Logout</a> 
+{% else %}
+Welcome Guest !&nbsp;&nbsp;&nbsp; | <a href="/login/registrationi/" title="Register to save all your data">Register Me</a> | {% ifequal user.package.name "Quick" %} <a href="/taxspanner/upgrademe/" title="Upgrade to TaxSpanner Advanced">Upgrade</a>  |{% endifequal %} <a href="/login/logout/" title="Logout" >Logout</a>
+{% endif %} 
+{% endblock %}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/SVN/CompetencyLab/!svn/ver/2084/POC/IOT/www.embitel.com/it/iot/monitor
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/SVN/CompetencyLab/!svn/ver/185/POC/IOT/www.embitel.com/it/iot/monitor/urls.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/SVN/CompetencyLab/!svn/ver/247/POC/IOT/www.embitel.com/it/iot/monitor/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/SVN/CompetencyLab/!svn/ver/185/POC/IOT/www.embitel.com/it/iot/monitor/__init__.py
+END
+ffserver.conf
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/SVN/CompetencyLab/!svn/ver/2084/POC/IOT/www.embitel.com/it/iot/monitor/ffserver.conf
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/SVN/CompetencyLab/!svn/ver/2084/POC/IOT/www.embitel.com/it/iot/monitor/utils.py
+END

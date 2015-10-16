@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/switch_sensor/urls.py
+END

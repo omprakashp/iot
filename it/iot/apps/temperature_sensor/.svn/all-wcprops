@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor/urls.py
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/SVN/CompetencyLab/!svn/ver/153/POC/IOT/www.embitel.com/it/iot/apps/temperature_sensor/__init__.py
+END

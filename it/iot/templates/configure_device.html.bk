@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+
+{% block 'script' %}
+
+  <script type="text/javascript">
+    function updateTextInput(val) {
+      document.getElementById('textInput').value=val; 
+    }
+  </script>
+
+</script>
+
+<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script src="/static/html-crc-reload.js"></script>
+
+{% endblock %}
+
+{% block 'body' %}
+
+
+
+
+<script>
+
+function outputUpdate(vol) {
+
+  document.querySelector('#volume').value = vol;
+
+}
+
+</script>
+
+{% for key, val in features_dict.iteritems  %}
+   {% if val == "OFF" or val == "ON" %}
+    {{ key }} {{ val }}
+    {% endif %}
+{% endfor %}
+
+<form action="/devices/configure/{{device.id}}/proc/" name="configure" id="configure" method="post">{% csrf_token %}
+    <div style="padding-left:15%; padding-top:1%;" >
+        <h2> Configure Device </h2>
+    </div>
+
+
+    <div id="thisdiv" style="padding-left:10%; padding-top:1%; display:inline-block;">
+			<table>
+                        {% for feature in features %}
+                        <tr>
+                        <td align="right"> {{ feature }} : </td>
+                        {% if feature == "ON / OFF" %}
+                        <td align="center">
+                                    <div class="onoffswitch" id="onoffswitch">
+                                      {% if device.deviceproperties.current_state == "ON" %}
+                                              <input type="checkbox" class="onoffswitch-checkbox" id="myonoffswitch" name="{{feature}}" checked>
+                                      {% else %}
+                                        <input type="checkbox" class="onoffswitch-checkbox" id="myonoffswitch" name="{{feature}}">
+                                      {% endif %}
+                                    <label class="onoffswitch-label" id="label" for="myonoffswitch">
+                                    <span class="onoffswitch-inner" id="inner"></span>
+                                    <span class="onoffswitch-switch" id="switch"></span>
+                                    </label>
+                                    </div>
+                       </td>
+                       {% elif feature == "DIM" %}
+                         <td align="center">
+                         <input type=range min=0 max=100 name="{{feature}}" value={{ device.deviceproperties.dim }} id=fader step=1 onchange="outputUpdate(value)">
+                         <output for=fader id=volume>{{ device.deviceproperties.dim }}</output> </td>
+
+                       {% else %}
+                        <td align="center"></td> <td align="center"> <input type="text" name="{{ feature }}"></td> 
+                       {% endif %}
+                       </tr>
+                        {% endfor %}
+                        <tr><td/><td align="right">
+                                <input style="background-color:#F29900" type="submit" value="Save">
+                        </td>
+                        </tr>
+                        </table>
+   </div>
+
+</form>
+
+{% endblock %}

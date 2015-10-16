@@ -1,0 +1,150 @@
+<meta http-equiv="Context-Type" content="text/html; charset=ISO-8859-1">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<style>
+body {
+background-color: #f0f0f0;
+}
+div.container {
+    width: 50em;
+    border: 0em solid lightgray;
+    float: left;
+    margin-top: 1em;
+    margin-left: 19em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    padding-left: 0.1em;
+    background-color: white;
+}
+div.box3 {
+box-sizing: border-box;
+float:left;
+width: 10%;
+margin-top:0em;
+}
+
+div.box1 {
+    box-sizing: border-box;
+    width: 40%;
+    margin-right: 2em;
+    margin-left: 2em;
+    border: 0em solid lightgray;
+    float: left;
+
+}
+div.box2 {
+    box-sizing: border-box;
+    width: 45%;
+    margin-right: 0em;
+    margin-left: 1em;
+    padding-left: 1em;
+    border: 0em solid gray;
+    float: left;
+}
+
+div.verticalLine {
+  width: 0.1em;
+  background-color:lightgray;
+  height: 65%;
+  padding-top:8em;
+  float: left;
+  border: 1px ridge lightgray ;
+  border-radius: 2px;
+  
+     box-shadow: 0.1px 0.1px 0.1px gray;
+
+}
+
+.servererror { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; color: red; padding-bottom: 2px; }
+</style>
+
+
+</head>
+<body>
+<img src="/static/embitel_logo.png" style="padding-top:0.5em;height:60;width:200;">
+<hr style="height:0.1em;background-color:lightgray;box-shadow: 0.2px 0.2px 0.2px gray;border: 1px ridge lightgray; border-radius: 1px;"/>
+
+<div class="container">
+
+<div class="box1">
+<p style="font-family:arial;color:blue;">Already Registered?</p>
+<p style="font-family:arial;font-size:1.6em;">SIGN IN</p>
+<hr>
+  <form name="form1" method="post" target="_top" id="login_form" action="/login/proc/">
+      <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" style="width:80%;">
+      <div class="servererror"> {% if form.errors.email %}* {{ form.errors.email|join:"| " }}<br/>{% endif %} </div>
+      </div>
+     
+      
+      <div class="form-group">
+      <label for="password">Password:</label>          
+      <input type="password" name="password" class="form-control" id="pwd" placeholder="Enter password" style="width:80%;">
+      <div class="servererror"> {% if form.errors.password %}* {{ form.errors.password|join:"| " }}<br/>{% endif %} </div>
+      </div>
+    
+      <div class="form-group">        
+      <button type="submit" class="btn btn-primary">Sign In</button>
+      </div>
+  
+  </form>
+
+</div>
+<div class="verticalLine">
+</div>
+
+<div class="box2">
+<div style="padding-left:15%; padding-top:1%;" >
+{% if registration_status %}
+<p><b style="color:green">{{registration_status }}</b></p>
+{% endif %}
+</div>
+
+<p style="font-family:arial;color:#FF4500;">Not Registered yet?</p>
+<p style="font-family:arial;font-size:1.6em;">REGISTER NOW!</p>
+<hr>
+<form action="/register/" method="post" target="_top" name="registration" id="registration">
+      <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" name="register_email" class="form-control" id="email" placeholder="Enter email" style="width:80%;">
+      <div class="servererror"> {% if form.errors.register_email %}* {{ form.errors.register_email|join:"| " }}<br/>{% endif %} </div>
+      </div>
+     
+      
+      <div class="form-group">
+      <label for="password">Password:</label>          
+      <input type="password" name="register_password" class="form-control" id="pwd" placeholder="Enter password" style="width:80%;">
+      <div class="servererror"> {% if form.errors.register_password %}* {{ form.errors.register_password|join:"| " }}<br/>{% endif %} </div>
+      </div>
+    
+        <div class="form-group">
+      <label for="confirm_passwordd">Confirm Password:</label>          
+      <input type="password" name="confirm_password" class="form-control" id="cpwd" placeholder="Confirm password" style="width:80%;">
+      <div class="servererror"> {% if form.errors.confirm_password %}* {{ form.errors.confirm_password|join:"| " }}<br/>{% endif %} </div>
+      </div>
+    
+      
+      <div class="form-group">        
+      <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+  
+  </form>
+  
+</div>
+
+</div>
+
+
+</body>
+</html>

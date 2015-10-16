@@ -1,0 +1,40 @@
+<!--<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script src="/static/html-crc-reload.js"></script>
+--!>
+
+    <div id="thisdiv" class="thisdiv" style="padding-left:10%; padding-top:1%; display:inline-block;">
+                        <table>
+                        {% for feature, val in features_dict.iteritems %}
+                        <tr>
+                        <td align="right"> {{ feature }} : </td>
+                        {% if val == "ON" or val == "OFF" %}
+                        <td align="center">
+                                    <div class="onoffswitch" id="onoffswitch">
+                                      {% if val == "ON" %}
+                                              <input type="checkbox" class="onoffswitch-checkbox" id="myonoffswitch{{feature}}" name="{{feature}}" checked>
+                                      {% else %}
+                                        <input type="checkbox" class="onoffswitch-checkbox" id="myonoffswitch{{feature}}" name="{{feature}}">
+                                      {% endif %}
+                                    <label class="onoffswitch-label" id="label" for="myonoffswitch{{feature}}">
+                                    <span class="onoffswitch-inner" id="inner"></span>
+                                    <span class="onoffswitch-switch" id="switch"></span>
+                                    </label>
+                                    </div>
+                       </td>
+                       {% elif feature == "DIM" %}
+                         <td align="center">
+                         <input type=range min=0 max=100 name="{{feature}}" value={{ val }} id=fader step=1 onchange="outputUpdate(value)">
+                         <output for=fader id=volume>{{ val }}</output> </td>
+
+                       {% else %}
+                        <td align="center"> <input type="text" size="5" name="{{ feature }}" value="{{ val }}"></td>
+                       {% endif %}
+                       </tr>
+                        {% endfor %}
+                        <tr><td/><td align="right">
+                                <input style="background-color:#F29900" type="submit" value="Save">
+                        </td>
+                        </tr>
+                        </table>
+   </div>
+

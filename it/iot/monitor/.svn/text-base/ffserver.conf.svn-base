@@ -1,0 +1,28 @@
+HTTPPort 5007
+# bind to all IPs aliased or not 
+HTTPBindAddress 10.99.90.32 
+# max number of simultaneous clients 
+MaxClients 1000 
+# max bandwidth per-client (kb/s) 
+MaxBandwidth 10000 
+# Suppress that if you want to launch ffserver as a daemon. 
+# NoDaemon 
+
+<Feed feed1.ffm> 
+File /tmp/feed1.ffm 
+FileMaxSize 5M 
+</Feed> 
+
+<Stream camera.swf>
+Feed feed1.ffm
+Format swf
+VideoCodec flv
+VideoFrameRate 30
+VideoBufferSize 80000
+VideoBitRate 300
+VideoQMin 1
+VideoQMax 5
+VideoSize 320x240
+PreRoll 0
+Noaudio
+</Stream>
